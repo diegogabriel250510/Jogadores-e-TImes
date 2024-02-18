@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionamento</title>
+    <style>
+        body {
+            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        form {
+            flex: 1;
+            text-align: center;
+        }
+        
+        button {
+            margin-left: 215px;
+            padding: 15px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #3498db;
+            transition: background-color 0.3s;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h4 {
+            margin-left: 5px;
+            font-size: 18px;
+        }
+        
+        h1 {
+            margin: 0;
+            margin-left: 450px;
+        }
+        
+        table {
+            margin-left: 80px;
+            border-collapse: collapse;
+            width: 75%;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<h1 id='head' class='head'>sistema de cadastro</h1>
+<body>
+    <div class="button-container">
+        <form action="/jogadores/cadastrar" method="get">
+            <button type="submit" id="jogadores-button">Cadastrar Jogador</button>
+            <div>
+                <h4>Lista de Jogadores</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Posição</th>
+                            <th>Idade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for jogador in jogadores %}
+                            <tr>
+                                <td>{{jogador.nome}}</td>
+                                <td>{{jogador.posicao}}</td>
+                                <td>{{jogador.idade}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <form action="/times/cadastrar" method="get">
+            <button type="submit" id="times-button">Cadastrar Time</button>
+            <div>
+                <h4>Lista de times</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Titulos</th>
+                            <th>Fundação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for time in times %}
+                            <tr>
+                                <td>{{time.nome}}</td>
+                                <td>{{time.titulos}}</td>
+                                <td>{{time.fundacao}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    
+    
+</body>
+</html>

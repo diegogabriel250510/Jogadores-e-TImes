@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes do Jogador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #666;
+        }
+        p {
+            color: #333;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalhes do Jogador</h1>
+        {% if jogadores %}
+            {% for jogador in jogadores %}
+                <a href="{% url 'cadastrar_jogador' %}">Voltar para cadastrar</a>
+                <h2>Nome do Jogador:</h2>
+                <p>{{ jogador.nome }}</p>
+
+                <h2>Posição:</h2>
+                <p>{{ jogador.posicao }}</p>
+
+                <h2>Idade:</h2>
+                <p>{{ jogador.idade }}</p>
+            {% endfor %}
+        {% else %}
+            <h2>Cadastre Um Jogador: </h2>
+            <a href="{% url 'cadastrar_jogador' %}">Voltar para cadastrar</a>
+
+        {% endif %}
+        
+
+        
+    </div>
+</body>
+</html>

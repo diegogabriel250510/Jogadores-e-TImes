@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Jogador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro de Jogador</h1>
+    <div class="container">
+        <form action={% url 'cadastrar_jogador' %} method="POST">{% csrf_token %}
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+    
+            <label for="posicao">Posição:</label>
+            <input type="text" id="posicao" name="posicao" required>
+    
+            <label for "idade">Idade:</label>
+            <input type="text" id="idade" name="idade" required>
+            
+            <br>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    
+
+   
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Jogador</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #alterarJogadorForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #mensagem {
+            margin-top: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    {% if jogador_mudar %}
+        {% for jogador in jogador_mudar %}
+            <!-- Seu template HTML -->
+
+            <div id="alterarJogadorForm">
+                <h1>Alterar Jogador</h1>
+
+                <form method="post" action="{% url 'alterar_jogador' jogador.id %}">{% csrf_token %}
+
+                    <label for="nomeJogador">Nome do Jogador:</label>
+                    <input type="text" id="nome" name="nome" placeholder="{{ jogador.nome }}" required>
+
+                    <label for="nomeJogador">Idade:</label>
+                    <input type="text" id="idade" name="idade" placeholder="{{ jogador.idade }}" required>
+
+                    <label for="nomeJogador">Posicao:</label>
+                    <input type="text" id="posicao" name="posicao" placeholder="{{ jogador.posicao }}" required>
+
+                    <button type="submit">Alterar Jogador</button>
+                </form>
+
+                <p id="mensagem"></p>
+            </div>
+
+        {%endfor%}
+    {% else %}
+        <div id="alterarJogadorForm">
+
+            <h1>precisamos que voce nos mande o id</h1>
+
+            
+
+            <button onclick="alterarJogador()">Alterar Jogador</button>
+
+            <p id="mensagem"></p>
+    {% endif %}
+        
+
+</body>
+</html>
